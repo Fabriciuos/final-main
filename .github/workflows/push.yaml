@@ -14,10 +14,7 @@ jobs:
         run: |
           go vet ./...
 
-      - name: Test
-	run: go test ./...
-      	
-   deploy:
+  deploy:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: test
@@ -48,3 +45,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }} 
+
